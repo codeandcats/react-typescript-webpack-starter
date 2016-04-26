@@ -1,9 +1,14 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 
-import { Hello } from "./components/Hello";
+import { Tree } from "./components/Tree";
+
+// ReactDOM.render(
+//     <Hello compiler="TypeScript" framework="React" />,
+//     document.getElementById("example")
+// );
 
 ReactDOM.render(
-    <Hello compiler="TypeScript" framework="React" />,
+    <Tree />,
     document.getElementById("example")
 );
