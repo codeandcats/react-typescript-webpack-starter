@@ -1,39 +1,26 @@
+/// <reference path="../../typings/main.d.ts" />
+
 import * as React from 'react';
 
 //var nodes = generateNodes('', 6, 5);
-var nodes = generateNodes('', 6, 5);
+//var nodes = generateNodes('', 6, 5);
 
-interface ITreeNode {
+export interface ITreeNode {
     key: string;
     label: string;
     children: ITreeNode[];
 }
 
-function generateNodes(path: string, count: number, depth: number): ITreeNode[] {
-    var nodes: ITreeNode[] = [];
-    
-    if (depth > 0) {
-        for (var index = 0; index < count; index++) {
-            var label = String.fromCharCode(65 + index);
-            var nodePath = path == '' ? label : path + '-' + label;
-            
-            nodes.push({
-                key: '' + index,
-                label: nodePath,
-                children: generateNodes(nodePath, count, depth - 1)
-            });
-        }
-    }
-    
-    return nodes;
+interface ITreeProps {
+    nodes: ITreeNode[];
 }
 
-export class Tree extends React.Component<any, {}> {
+export class Tree extends React.Component<ITreeProps, {}> {
     render() {
         console.time('Tree.render');
-        var result = nodes.length ? 
+        var result = this.props.nodes.length ? 
             <ul>
-                {nodes.map((n, i) => <TreeNode key={i} node={n}></TreeNode>)}
+                {this.props.nodes.map((n, i) => <TreeNode key={i} node={n}></TreeNode>)}
             </ul>
             : null;
         console.timeEnd();
