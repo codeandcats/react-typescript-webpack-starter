@@ -32,8 +32,11 @@ node_modules
 # Optional REPL history
 .node_repl_history
 
-# Dist
-dist
+# Generated JS
+bundle.js
+bundle.js.map
+typescripts/app/*.js
+typescripts/app/*.map
 
 # Type Definitions
-typings
+typescripts/typings
